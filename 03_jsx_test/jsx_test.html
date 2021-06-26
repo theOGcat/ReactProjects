@@ -16,23 +16,27 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
     <!-- 此处一定是babel -->
     <script type="text/babel">
-        const myId="aaa"
-        const myData="hello react"
-       //1. 创建多级dom
-       const VDOM=(
-        <div>
-            <h2 >
-           <span style={{color:"red" ,fontSize:"20px"}} >hello,react</span>
-         
-           </h2> 
-           <h2 >
-           <span style={{color:"red" ,fontSize:"20px"}} >hello,react</span>
-         
-           </h2>     
-        </div>
-       )
-       //2.渲染虚拟dom到页面
-       ReactDOM.render(VDOM,document.getElementById("test"))
+
+
+       //模拟一些数据
+       const data=["Angular","react","Vue"]
+
+       //1.build DOM
+        const VDOM=(
+            <div>
+              <h1>前端js框架列表</h1>
+              <ul>
+                {
+                    data.map((item,index)=>{
+                        //函数体
+                        return <li key={index}>{item}</li>
+                    })
+                }
+              </ul>  
+            </div>
+        )
+        //2.渲染虚拟DOM到页面
+        ReactDOM.render(VDOM,document.getElementById("test"))
     
     
     </script> 
