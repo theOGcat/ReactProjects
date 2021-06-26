@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+        //创建虚拟dom
+        const VDOM = <h1>hello react </h1>
+
+        //渲染虚拟dom到页面
+        ReactDOM.render(VDOM,document.getElementById('test'))
+    
+    
+    </script> 
+</body>    
+</html>
