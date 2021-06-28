@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+
+
+    <button id="but1">button1</button>
+    <button id="but2">button2</button>
+    <button onclick="demo()">button3</button>
+
+    <script type="text/javascript">
+
+        const btn1=document.getElementById('but1')
+        btn1.addEventListener('click',()=>{
+            alert('button1 was pressed')
+        })
+
+        const btn2=document.getElementById('but2')
+        btn2.onclick=()=>{
+            alert('button2 was pressed')
+        }
+        function demo(){
+            alert('button3 was pressed')
+        }
+    </script>
+</body>
+
+
+
+
+
+</html>

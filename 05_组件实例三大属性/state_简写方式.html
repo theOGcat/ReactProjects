@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+       //1.创建组件
+       class Weather extends React.Component{
+           
+            constructor(props){
+                super(props)
+                
+              
+                this.demo1=this.changWeather.bind(this)
+            }
+
+            state={isHot:false}
+
+           render(){
+               
+               return <h1 onClick={this.demo1}>today's Weather is {this.state.isHot ? "hot": "cool"}</h1>
+           }
+           
+           changWeather(){
+              
+                const isHot=this.state.isHot;
+                
+                this.setState({isHot:!isHot})
+
+}
+       }
+       
+       ReactDOM.render(<Weather/>,document.getElementById("test"))
+       
+       
+    </script> 
+</body>    
+</html>

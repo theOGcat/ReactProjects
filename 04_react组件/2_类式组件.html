@@ -18,13 +18,14 @@
     <script type="text/babel">
        //1.创建类式组件
        class MyComponent extends React.Component{
+           //render放在MyComponent的原型对象上，供实例使用
            render(){
                return <h2>我是用类定义的组件（适用于【复杂组件】的定义）</h2>
            }
 
        }
        //渲染组件到页面
-       ReactDOM.render(<MyComponent/>,document.getElementById("test"))
+       ReactDOM.render(<MyComponent/>,document.getElementById("test"))  
     
     
     </script> 
