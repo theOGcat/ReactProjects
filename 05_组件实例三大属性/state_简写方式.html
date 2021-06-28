@@ -19,27 +19,27 @@
        //1.创建组件
        class Weather extends React.Component{
            
-            constructor(props){
-                super(props)
-                
+            // constructor(props){
+            //     super(props)
+            //     //this.state={isHot:false}
               
-                this.demo1=this.changWeather.bind(this)
-            }
-
+            //     //this.demo1=this.changWeather.bind(this)
+            // }
             state={isHot:false}
 
            render(){
                
                return <h1 onClick={this.demo1}>today's Weather is {this.state.isHot ? "hot": "cool"}</h1>
            }
-           
-           changWeather(){
+           //自定义方法，要用赋值语句的形式+箭头函数
+           demo1=()=>{
               
                 const isHot=this.state.isHot;
                 
                 this.setState({isHot:!isHot})
+           }
 
-}
+
        }
        
        ReactDOM.render(<Weather/>,document.getElementById("test"))
