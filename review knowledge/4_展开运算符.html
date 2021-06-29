@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+<script type='text/javascript'>
+ let arr1=[1,2,3,4,5]
+ let arr2=[6,7,8,9,10]
+ console.log(...arr1)//展开一个数组
+ let arr3=[...arr1,...arr2]//连接数组
+ console.log(arr3)
+//在函数中使用
+ function sum(...numbers){
+    return numbers.reduce((preValue,currentValue)=>{
+        return preValue+currentValue
+    })
+ }
+ console.log(sum(1,2,3,4))
+
+ let person={name:'tim',age:18}
+ let person2={...person}//新语法，复制person
+
+//合并
+ let person3={...person,name:'jack'}
+ console.log(person3)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入prop-types,用于对组件标签属性进行限制 -->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+       //创建组件
+       class Person extends React.Component{
+           render(){
+               //props是只读的
+               return (
+                <ul>
+                    <li>name:{this.props.name}</li>
+                    <li>sex:{this.props.sex}</li>
+                    <li>age:{this.props.age}</li>
+
+                
+                </ul>
+                )
+           }
+       }
+       //对标签属性进行类型，必要性的限制
+       Person.propTypes={
+           name:PropTypes.string.isRequired,
+           sex:PropTypes.string,
+           age:PropTypes.number,
+           speak:PropTypes.func,
+
+       }
+       //指定默认标签属性值
+       Person.defaultProps={
+           sex:'not girl not boy',
+           age:18
+       }
+       //渲染组件到页面
+       ReactDOM.render(<Person name='Tom' age='18' sex='girl' speak={speak}/>,document.getElementById('test1'))
+       ReactDOM.render(<Person name='Tom' age='18' sex='girl'/>,document.getElementById('test2'))
+       const p={name:'tom',age:18,sex:"girl"}
+       ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))
+
+       function speak(){
+           console.log('i can speak');
+       }
+    </script> 
+</body>    
+</html>
