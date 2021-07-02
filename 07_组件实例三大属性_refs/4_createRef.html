@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createRef</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+        // create compoment
+        class Demo extends React.Component{
+            // React.createRef调用后返回一个容器，该容器可以存储被ref所标识的结点,该容器是专人专用的
+            myRef= React.createRef()
+            
+            myRef2= React.createRef()
+            showData=()=>{
+                
+                alert(this.myRef.current.value)
+            }
+            showData2=()=>{
+                alert(this.myRef2.current.value)
+            }
+            render(){
+                return(
+                <div>
+                  <input ref={this.myRef} type='text' placeholder='press button and show the data'/>
+                  <button onClick={this.showData}>touch me , let me know the data of left side</button>&nbsp;
+                  <input onBlur={this.showData2} ref={this.myRef2} type='text' placeholder='lose mouse and show the data'/>      
+                    
+                </div> 
+
+                )
+                
+            }
+            
+            
+        }
+        //show the page
+        ReactDOM.render(<Demo/>,document.getElementById("test"))
+    
+    
+    </script> 
+</body>    
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+        // create compoment
+        class Demo extends React.Component{
+            
+            state={isHot:true}
+            
+            
+            showData=()=>{
+                const {input1} =this
+                alert(input1.value)
+            }
+            changeWeather=()=>{
+                 const {isHot} =this.state
+                 this.setState({isHot: !isHot})
+            }
+            saveInput=(c)=>{
+                this.input1=c
+                console.log("@",c)
+
+            }
+            render(){
+                const {isHot}=this.state
+                return(
+                <div>
+                  <h2>Today is {isHot ? "hot" : "cool"}</h2>
+                {/*  <input ref={(currentNode)=>{this.input1=currentNode}} type='text' placeholder='press button and show the data'/><br/>*/}
+                <input ref={this.saveInput} type="text"/><br/> 
+                <button onClick={this.showData}>touch me , let me know the input data</button><br/>
+                  <button onClick={this.changeWeather}>touch me , change the weather</button>
+                    
+                </div> 
+
+                )
+                
+            }
+            
+            
+        }
+        //show the page
+        ReactDOM.render(<Demo/>,document.getElementById("test"))
+    
+    
+    </script> 
+</body>    
+</html>
