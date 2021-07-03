@@ -19,6 +19,7 @@
         // create compoment
         class Demo extends React.Component{
             // React.createRef调用后返回一个容器，该容器可以存储被ref所标识的结点,该容器是专人专用的
+            // create ref container
             myRef= React.createRef()
             
             myRef2= React.createRef() 
@@ -26,8 +27,8 @@
                 
                 alert(this.myRef.current.value)
             }
-            showData2=()=>{
-                alert(this.myRef2.current.value)
+            showData2=(event)=>{
+                alert(event.target.value)
             }
             render(){
                 return(

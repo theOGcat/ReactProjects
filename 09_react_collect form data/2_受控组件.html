@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+        //create compoment
+        class Login extends React.Component{
+            handleSubmit=(event)=>{
+                event.preventDefault()//阻止表单提交
+                const {username,password} =this
+                alert(`the username you input is ${username.value}, the password is ${password.value} `)
+            }
+            demo=(event)=>{
+                console.log(event.target.value)
+                this.setState({username:event.target.value})
+
+            }
+            
+            render(){
+                return(
+                    <form action="www.baidu.com" onSubmit={this.handleSubmit}>
+                        username:<input onChange={this.demo} type="text" name="username"/>
+                        password:<input  type="password" name="password"/>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+        //渲染组件
+        ReactDOM.render(<Login/>,document.getElementById("test"))
+    
+    
+    </script> 
+</body>    
+</html>
