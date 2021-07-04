@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+       //create component
+       //生命周期回调函数(生命周期钩子函数)(生命周期钩子)
+       class Life extends React.Component{
+        
+        state={opacity:1}
+        death=()=>{
+            
+            //卸载unmount component
+            ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+        }   
+        
+        // action=()=>{
+            
+
+
+        // }
+        //组件挂在页面之后调用
+        componentDidMount(){
+            this.timer=setInterval(() => {
+                //获取原状态acquire original state
+                let {opacity}=this.state
+                //减少0.1
+                opacity -= 0.1
+                if(opacity <= 0) opacity=1
+                //set new opacity    should be(opacity:opacity) 可以省略
+                this.setState({opacity})
+            }, 200);
+
+        }
+
+        //组件将要卸载
+        componentWillUnmount(){
+            //清空定时器
+            clearInterval(this.timer)
+        }
+        //render调用的时机：初始化渲染，状态更新之后（每次状态变化之后都需要调用render）
+        render(){
+            
+            return(
+                   <div>
+                        <h2 style={{opacity:this.state.opacity}}>React学不会怎么办？ I can not study React well,how should I do?</h2>
+                        <button onClick={this.death}>不活了 To dead</button>
+                        <button onClick={this.action}>开始变化 start change</button>
+                    
+                    </div>
+               )
+           }
+       }
+       //渲染组件
+       ReactDOM.render(<Life/>,document.getElementById("test"))
+    
+    
+    </script> 
+</body>    
+</html>

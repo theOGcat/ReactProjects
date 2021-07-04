@@ -30,23 +30,20 @@
                 username:'',//username
                 password:''//password
             }
-            //save username in state
-            saveUsername=(event)=>{
-                //console.log(event.target.value)
-                this.setState({username:event.target.value})
-
-            }
-            savePassword=(event)=>{
-                //console.log(event.target.value)
-                this.setState({username:event.target.value})
+            
+            saveFormData=(dataType)=>{
+                //console.log(dataType)
+                return (event)=>{
+                    this.setState({[dataType]:event.target.value})
+                }
 
             }
             
             render(){
                 return(
                     <form action="www.baidu.com" onSubmit={this.handleSubmit}>
-                        username:<input onChange={this.saveUsername} type="text" name="username"/>
-                        password:<input  onChange={this.savePassword} type="password" name="password"/>
+                        username:<input onChange={this.saveFormData('username')} type="text" name="username"/>
+                        password:<input  onChange={this.saveFormData('password')} type="password" name="password"/>
                         <button>登录</button>
                     </form>
                 )
