@@ -38,6 +38,18 @@
 
 
         }
+        //卸载组件按钮的回调
+        death=()=>{
+            ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+
+        }
+        //强制更新组件按钮的回调
+        force=()=>{
+            this.forceUpdate()
+
+        }
+        
+
         //组件将要挂载的钩子
         componentWillMount(){
             console.log("count---componentWillMount");
@@ -48,6 +60,31 @@
         componentDidMount(){
             console.log("count---componentDidMount")
         }
+
+        
+        //组件将要卸载的钩子
+        componentWillUnmount(){
+            console.log("count---componentWillUnMount")
+        }
+        //控制组件更新的阀门
+        shouldComponentUpdate(){
+            console.log("count---shouldComponentUpdate")
+            return true
+
+        }
+        //组件将要更新的钩子
+        componentWillUpdate(){
+            console.log("count---ComponentWillUpdate")
+            
+
+        }
+        //组件更新完毕的钩子
+        componentDidUpdate(){
+            console.log("count---ComponentDidUpdate")
+            
+
+        }
+           
             
 
         render(){
@@ -57,6 +94,8 @@
                    <div>
                     <h2>sum is {count}</h2>
                     <button onClick={this.add}>press me add one</button>
+                    <button onClick={this.death}>press me delete component</button>
+                    <button onClick={this.force}>press me update without changing data</button>
                     </div>
                )
            }
