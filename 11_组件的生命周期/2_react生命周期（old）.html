@@ -100,8 +100,41 @@
                )
            }
        }
+       
+       class A extends React.Component{
+        //初始化状态
+        state={carName:"BMW"}   
+        
+        changCar=()=>{
+            this.setState({carName:"Nissan"})
+        }
+        render(){
+               return(
+                   <div>
+                        <div>I am A component</div>
+                        <button onClick={this.changCar}>changecar</button>
+                        <B carName={this.state.carName}/>
+                    
+                    </div>
+               )
+           }
+       }
+       class B extends React.Component{
+        
+        componentWillReceiveProps(){
+            console.log("b---componentWillReceiveProps")
+        }
+        
+        render(){
+               return(
+                   <div>I am B component,receive the car is :{this.props.carName}</div>
+               )
+           }
+       }
+       
+       
        //渲染组件
-       ReactDOM.render(<Count/>,document.getElementById("test"))
+       ReactDOM.render(<A/>,document.getElementById("test"))
     
     
     </script> 
