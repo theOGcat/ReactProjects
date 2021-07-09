@@ -48,9 +48,15 @@
             this.forceUpdate()
 
         }
-        
-        getDerivedStateFromProps(){
+        //若state的值在任何时候都取决于props,那么可以使用getDerivedStateFromProps
+        static  getDerivedStateFromProps(){
             console.log("getDerivedStateFromProps")
+            return null
+        }
+        //在更新之前获取快照
+        getSnapshotBeforeUpdate(){
+            console.log("getSnapshotBeforeUpdate")
+            return null
         }
        
           
@@ -72,8 +78,8 @@
         }
         
         //组件更新完毕的钩子
-        componentDidUpdate(){
-            console.log("count---ComponentDidUpdate")
+        componentDidUpdate(preProps,preState,snapshotValue){
+            console.log("count---ComponentDidUpdate",preProps,preState,snapshotValue)
             
 
         }
