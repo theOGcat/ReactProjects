@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello_react</title>
+</head>
+<body>
+    <!-- 准备好一个容器， -->
+    <div id="test"></div>
+
+   <!-- 引入react核心库 -->
+   <script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+   <!-- 引入react-dom用于支持react操作dom -->
+   <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+   <!-- 引入babel 用于将jsx转为js -->
+   <script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
+    <!-- 此处一定是babel -->
+    <script type="text/babel">
+       class Person extends React.Component{
+        state={
+            persons:[
+                {id:1,name:'tony',age:18},
+                {id:2,name:'bob',age:28}
+            ]
+        }  
+        
+        add=()=>{
+            const{persons}=this.state
+            const p={id:persons.length+1,name:'Mr.Wang',age:20}
+            this.setState({persons:[p,...persons]})
+        }
+        
+        
+        render(){
+               return(
+                   <div>
+                    <h2>show person information</h2>
+                    <button onClick={this.add}>add Mr.Wang</button>
+                    <h3>use index (索引值)as key</h3>
+                    <ul>
+                        {this.state.persons.map((personObj,index)=>{
+                            return <li key={index}>{personObj.name}-----{personObj.age}<input type="text"/></li>
+
+                        })
+                    }
+                    
+                    </ul>
+                    <hr>
+                    </hr>  
+                    <h3>use id （数据的唯一标识） as key</h3>
+                    <ul>
+                        {this.state.persons.map((personObj,index)=>{
+                            return <li key={personObj.id}>{personObj.name}-----{personObj.age}<input type="text"/></li>
+
+                        })
+                    }
+                    
+                    </ul>                  
+                    
+                    
+                    
+                    </div>
+                   
+               )
+           }
+       }
+
+
+       ReactDOM.render(<Person/>,document.getElementById("test"))
+    
+    </script> 
+</body>    
+</html>
